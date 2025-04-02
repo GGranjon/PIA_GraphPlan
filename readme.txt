@@ -1,0 +1,1 @@
+DoPlan requiert uniquement un fichier "r_facts" comme argument.
