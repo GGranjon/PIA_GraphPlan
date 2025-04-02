@@ -1,0 +1,18 @@
+(USA PLACE)
+(London PLACE)
+(r1 ROCKET)
+(r2 ROCKET)
+(alex CARGO)
+(jason CARGO)
+(preconds
+(at r1 London)
+(at r2 London)
+(at alex London)
+(at jason London)
+(has-fuel r1)
+(has-fuel r2))
+
+(effects
+(at alex USA)
+(at jason USA))
+

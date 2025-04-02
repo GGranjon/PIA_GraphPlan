@@ -2,7 +2,7 @@ from parse_txt import parse_objects
 from propositions import at_prop, in_prop, fuel_prop
 
 def find_actions(proposition_layer, objects):
-    return find_load_actions(proposition_layer, objects) + find_unload_actions(proposition_layer) + find_move_actions(proposition_layer, objects)
+    return find_load_actions(proposition_layer, objects) + find_unload_actions(proposition_layer) + find_move_actions(proposition_layer, objects) + find_no_ops(proposition_layer)
 
 def find_load_actions(proposition_layer, objects):
     actions = []
@@ -45,6 +45,19 @@ def find_move_actions(proposition_layer, objects):
             for location_to in objects["PLACE"]:
                 if location_from != location_to:
                     actions.append({"action" : f"MOVE_{rocket}_{location_from}_{location_to}", "pre" : [fuel_prop(rocket), at_prop(rocket, location_from)], "post" : [at_prop(rocket, location_to), fuel_prop(rocket, neg = True), at_prop(rocket, location_from, neg = True)]})
+    return actions
+
+def find_no_ops(proposition_layer):
+    actions = []
+    for prop in proposition_layer:
+        match prop["type"]:
+            case "at":
+                actions.append({"action" : f"NOOP_at_{prop["object"]}_{prop["place"]}", "pre" : [at_prop(prop["object"], prop["place"])], "post" : [at_prop(prop["object"], prop["place"])]})
+            case "in":
+                actions.append({"action" : f"NOOP_in_{prop["object"]}_{prop["rocket"]}", "pre" : [in_prop(prop["object"], prop["rocket"])], "post" : [in_prop(prop["object"], prop["rocket"])]})
+            case "has_fuel":
+                actions.append({"action" : f"NOOP_has_fuel_{prop["rocket"]}", "pre" : [fuel_prop(prop["rocket"])], "post" : [fuel_prop(prop["rocket"])]})
+
     return actions
 
 def get_object_type(object_name, objects):

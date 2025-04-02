@@ -1,12 +1,14 @@
 from planificator import Planificator
 from actions_finder import find_actions
+from propositions_finder import find_propositions
 def main(path):
     planificator = Planificator()
-    planificator.DoPlan(path)
-    prop_layer = planificator.graph.layers[0]
-    objects = planificator.objects
-    print("\n\n",find_actions(prop_layer, objects))
+    print(planificator.DoPlan(path))
+    for i, layer in enumerate(planificator.graph.layers):
+        print(f"---------------------- LAYER {i} ------------------------------\n\n")
+        for elt in layer:
+            print(elt, "\n")
 
 if __name__ == "__main__":
-    path = "Exemples/r_fact_perso.txt"
+    path = "Exemples/r_fact_perso2.txt"
     main(path)
