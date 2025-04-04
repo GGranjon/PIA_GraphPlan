@@ -24,7 +24,7 @@ def are_prop_neg(p1,p2):
                 return p1["object"] == p2["object"] and p1["rocket"] != p2["rocket"]
             
             case "has_fuel":
-                return p1["neg"] != p2["neg"]
+                return p1["rocket"] == p2["rocket"] and p1["neg"] != p2["neg"]
 
 def are_prop_support_mutex(p1, p2, actions_mutex):
     p1_actions = p1["actions"]

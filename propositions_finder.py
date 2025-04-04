@@ -43,3 +43,8 @@ def get_index(propositions, prop):
                         return i
     return -1
 
+def get_indexes(propositions, list_prop):
+    res = []
+    for prop in list_prop:
+        res.append(get_index(propositions, prop))
+    return res
