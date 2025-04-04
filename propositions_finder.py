@@ -41,5 +41,5 @@ def get_index(propositions, prop):
                 case "has_fuel":
                     if prop2["rocket"] == prop["rocket"]:
                         return i
-    raise Exception("Proposition not found in the list")
+    return -1
 

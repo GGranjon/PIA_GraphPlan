@@ -8,8 +8,5 @@ class Graph():
     def add_layer(self, layer):
         self.layers.append(layer)
     
-    def get_action_mutex(self):
-        pass
-
-    def get_proposition_mutex(self):
-        pass
+    def add_mutex_layer(self, layer):
+        self.mutex_per_layer.append(layer)
