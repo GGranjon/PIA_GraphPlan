@@ -63,19 +63,12 @@ def find_solution(objectives, graph: Graph, layer_index):
             #print("------------------- NO COMBINATION OF ACTIONS FOUND -----------------")
             return ["fail", []]
     else:
-        for combo in action_combinations:
-            new_objectives = []
-            for action_index in combo:
-                action_preconditions = actions[action_index]["pre"]
-                for precond in action_preconditions:
-                    if precond not in new_objectives:
-                        new_objectives.append(precond)
-
-            sol_combo = find_solution(new_objectives, graph, layer_index-2)
+        solutions = Parallel(n_jobs=-1)(delayed(process_action_combo)(combo, actions, graph, layer_index) for combo in action_combinations)
+        for k, sol_combo in enumerate(solutions):
             if sol_combo[0] == "success":
                 new_sol = sol_combo[1]
                 actions_this_step = set({})
-                for index in combo:
+                for index in action_combinations[k]:
                     actions_this_step.add(actions[index]["action"])
                 new_sol.append(actions_this_step)
                 return ["success", new_sol]
