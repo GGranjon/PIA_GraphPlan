@@ -9,21 +9,15 @@ def objectives_reachable(objectives, propositions, mutex_propositions):
     if len(objectives) == 0:
         return True
     objectives_indexes = []
-    """print("IN OBJECTIVE REACHABLE\n")
-    for prop in propositions:
-        print(prop, "\n")"""
     for prop in objectives:
         index = get_index(propositions, prop)
         if index == -1:
-            #print("NOT REACHABLE BECAUSE NOT FOUND ------------------------------------------------------------------------------\n")
-            #print(prop)
             return False
         objectives_indexes.append(index)
     for i in range(len(objectives_indexes)-1):
         for j in range(i+1, len(objectives_indexes)):
             couple = {objectives_indexes[i],objectives_indexes[j]}
             if couple in mutex_propositions:
-                #print(f"{objectives[i]} and {objectives[j]} are mutex ----------------- : {i,j}\n")
                 return False
     return True
 
@@ -44,14 +38,16 @@ def process_action_combo(combo, actions, graph, layer_index, file_path):
     return sol_combo
 
 def find_solution(objectives, graph: Graph, layer_index, file_path):
-    #file = open(file_path, "a")
-    #file.write(f"--------------------------- LAYER {layer_index} ------------------------------\n")
-    #print(f"--------------------------- LAYER {layer_index} ------------------------------\n")
+    file = open(file_path, "a")
+    file.write(f"\n--------------------------- LAYER {layer_index} ------------------------------\n")
+
     parallel = True
     if layer_index == 0:    # Base case scenario
         if objectives_reachable(objectives, graph.layers[layer_index], []):
+            file.write("\nOBJECTIVES ARE NOT MUTEX AT LAYER 0\n")
             return ["success", []]
         else:
+            file.write("\nOBJECTIVES ARE MUTEX AT LAYER 0\n")
             return ["fail", []]
     
     propositions = graph.layers[layer_index]
@@ -63,39 +59,43 @@ def find_solution(objectives, graph: Graph, layer_index, file_path):
     for objective in objectives :
         index = get_index(propositions, objective)
         if index == -1 :
-            raise Exception("prop not found")
+            raise Exception("proposition not found")
         indexes.append(index)
     objectives = [propositions[index] for index in indexes]
 
-    """print("-------------------- OBJECTIVES -------------------------\n")
+    file.write("\n-------------------- OBJECTIVES -------------------------\n")
     for obj in objectives:
-        print(f"{obj}\n")"""
+        file.write(f"{obj["name"]}\n")
 
     if not objectives_reachable(objectives, graph.layers[layer_index], mutex_propositions):
-        #print("OBJECTIVES ARE MUTEX")
+        file.write("\nOBJECTIVES ARE MUTEX\n")
         return ["fail", []]
+    file.write("\nOBJECTIVES ARE NOT MUTEX\n")
 
     actions_per_objective = {}
     for i, objective in enumerate(objectives):
         actions_per_objective[i] = objective["actions"]
-        #print(objective)
-        #print(f"OBJECTIF {i} : {[actions[index]["action"] for index in objective["actions"]]}")
     
     action_combinations = find_valid_action_combinations(actions_per_objective, mutex_actions)
     if len(action_combinations) == 0:
-            #file.write("------------------- NO COMBINATION OF ACTIONS FOUND -----------------")
+            file.write("\n------------------- NO COMBINATION OF ACTIONS FOUND -----------------\n")
             return ["fail", []]
     else:
         if parallel:
+            file.write("\n STARTING PARALLEL RESEARCH OF A SOLUTION IN THE SET OF ACTIONS THAT GIVES OUR OBJECTIVES\n")
+            file.close()
             solutions = Parallel(n_jobs=-1)(delayed(process_action_combo)(combo, actions, graph, layer_index, file_path) for combo in action_combinations)
+            file = open(file_path, "a")
             for k, sol_combo in enumerate(solutions):
                 if sol_combo[0] == "success":
+                    file.write("\n A SET OF ACTIONS MAKING OUR OBJECTIVES HAS BEEN FOUND DOABLE IN THE PREVIOUS LAYER\n")
                     new_sol = sol_combo[1]
                     actions_this_step = set({})
                     for index in action_combinations[k]:
                         actions_this_step.add(actions[index]["action"])
                     new_sol.append(actions_this_step)
                     return ["success", new_sol]
+            file.write("\n NO SET OF ACTIONS THAT GIVE OUR OBJECTIVES ARE DOABLE\n")
         else:
             for combo in action_combinations:
                 new_objectives = []
@@ -112,6 +112,7 @@ def find_solution(objectives, graph: Graph, layer_index, file_path):
                         actions_this_step.add(actions[index]["action"])
                     new_sol.append(actions_this_step)
                     return ["success", new_sol]
+        file.close()
         return ["fail", []]
 
 def find_valid_action_combinations(actions_for_props, mutex_actions):

@@ -28,7 +28,19 @@ class Planificator():
         solved = False
         sol = []
 
-        #file = open(self.writing_path, "w")
+        file = open(self.writing_path, "w")
+
+        file.write(f"-----------------------------------------------------------------------------------------------------------------\n")
+        file.write(f"----------------------------------------------- PROFONDEUR 0 ----------------------------------------------------\n")
+        file.write(f"-----------------------------------------------------------------------------------------------------------------\n\n")
+
+        file.write(f"------------------------ INITIAL PROPOSITIONS ------------------------\n\n")
+        for prop in self.graph.layers[0]:
+                file.write(f"{prop["name"]}\n")
+
+        file.write(f"\n--------------------- INITIAL MUTEX PROPOSITIONS ---------------------\n\n")
+        for prop in self.graph.mutex_per_layer[0]:
+                file.write(f"{prop}\n")
 
         while not solved and n_iter < n_iter_lim:
             actions = find_actions(self.graph.layers[-1], self.objects)
@@ -42,26 +54,42 @@ class Planificator():
 
             mutex_propositions = find_mutex_propositions(propositions, self.graph.mutex_per_layer[-1])
             self.graph.add_mutex_layer(mutex_propositions)
-            """file.write(f"------------------------ PROFONDEUR {n_iter} ------------------------\n")
-            file.write("----------------------- PROPOSITIONS --------------------\n")
-            for prop in propositions:
-                file.write(f"{prop}\n")
-            file.write(f"---------------------- ACTIONS ----------------------")
+
+            file.write(f"\n-----------------------------------------------------------------------------------------------------------------\n")
+            file.write(f"----------------------------------------------- PROFONDEUR {n_iter+1} ----------------------------------------------------\n")
+            file.write(f"-----------------------------------------------------------------------------------------------------------------\n\n")
+
+            file.write(f"------------------------------ ACTIONS -------------------------------\n\n")
             for i, action in enumerate(actions):
-                file.write(f"{action["action"]} (index {i})\n")
-            file.write("----------------------- MUTEX -------------------------")
+                file.write(f"{action["action"]}\n")
+
+            file.write("\n-------------------------- NEW PROPOSITIONS --------------------------\n\n")
+            for prop in propositions:
+                file.write(f"{prop["name"]}\n")
+
+            file.write("\n-------------------------- MUTEX ACTIONS -----------------------------\n\n")
             for mutex in mutex_actions:
-                file.write(f"{actions[list(mutex)[0]]["action"], actions[list(mutex)[1]]["action"]}")"""
+                file.write(f"{actions[list(mutex)[0]]["action"], actions[list(mutex)[1]]["action"]}\n")
+            
+            file.write("\n------------------------ MUTEX PROPOSITIONS --------------------------\n\n")
+            for mutex in mutex_propositions:
+                file.write(f"{propositions[list(mutex)[0]]["name"], propositions[list(mutex)[1]]["name"]}\n")          
 
             if objectives_reachable(self.objectives, propositions, mutex_propositions):
-                #print("!!!!!!!!!!!!!!!!!!!!!!!!!!! OBJECTIVE IS THEORETICALLY REACHABLE !!!!!!!!!!!!!!!!!!!!!!!!!\n")
+                file.write("\n\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! OBJECTIVE IS THEORETICALLY REACHABLE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n")
+                file.write("\n\n STARTING THE RESEARCH OF A SOLUTION \n\n")
+                file.close()
                 sol = find_solution(self.objectives, self.graph, len(self.graph.layers)-1, writing_path)
+                file = open(writing_path, "a")
                 if sol[0] == "success":
                     solved = True
             n_iter += 1
             print(n_iter)
-        #file.close()
-
+        if solved:
+            file.write("\n\nA SOLUTION HAS BEEN FOUND !\n\n")
+        else:
+            file.write("\n\nTHE SEARCH LIMIT HAS BEEN REACHED, NO SOLUTION FOUND\n\n")
+        file.close()
         self.solution = sol
     
     def print_solution(self):
@@ -72,3 +100,15 @@ class Planificator():
                         print(f"{action}\n")
         else:
             print("Still no solution found")
+    
+    def write_solution(self, writing_path):
+        file = open(writing_path, "a")
+        if self.solution != None and self.solution[0] == "success":
+            file.write(f"\nSOLUTION : \n\n")
+            for action_layer in self.solution[1]:
+                for action in list(action_layer):
+                    if not "NOOP" in action:
+                        file.write(f"{action}\n")
+        else:
+            None
+        file.close()
