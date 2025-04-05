@@ -8,25 +8,28 @@ class Planificator():
 
     def __init__(self):
         self.objectives = []
-        self.actions = ["MOVE", "LOAD", "UNLOAD"]
         self.objects = None
         self.graph = None
         self.solution = None
 
-    def init_problem(self,path):
+    def init_problem(self,path, writing_path=None):
         objects, propositions, objectives = parse_txt_to_objects(path)
         self.objectives = objectives
         self.objects = objects
         self.graph = Graph()
         self.graph.add_layer(propositions)
         self.graph.add_mutex_layer([])
+        self.writing_path = writing_path
     
-    def DoPlan(self, r_facts):
-        self.init_problem(r_facts)
+    def DoPlan(self, r_facts, writing_path):
+        self.init_problem(r_facts, writing_path)
         n_iter = 0
-        n_iter_lim = 12
+        n_iter_lim = 7
         solved = False
         sol = []
+
+        #file = open(self.writing_path, "w")
+
         while not solved and n_iter < n_iter_lim:
             actions = find_actions(self.graph.layers[-1], self.objects)
             self.graph.add_layer(actions)
@@ -39,22 +42,25 @@ class Planificator():
 
             mutex_propositions = find_mutex_propositions(propositions, self.graph.mutex_per_layer[-1])
             self.graph.add_mutex_layer(mutex_propositions)
-
-            """print("----------------------- PROPOSITIONS --------------------")
+            """file.write(f"------------------------ PROFONDEUR {n_iter} ------------------------\n")
+            file.write("----------------------- PROPOSITIONS --------------------\n")
             for prop in propositions:
-                print(f"{prop}")
-            print(f"---------------------- ACTIONS ----------------------")
+                file.write(f"{prop}\n")
+            file.write(f"---------------------- ACTIONS ----------------------")
             for i, action in enumerate(actions):
-                print(f"{action["action"]} (index {i})\n")
-            print("----------------------- MUTEX -------------------------")
+                file.write(f"{action["action"]} (index {i})\n")
+            file.write("----------------------- MUTEX -------------------------")
             for mutex in mutex_actions:
-                print(f"{actions[list(mutex)[0]]["action"], actions[list(mutex)[1]]["action"]}")"""
+                file.write(f"{actions[list(mutex)[0]]["action"], actions[list(mutex)[1]]["action"]}")"""
+
             if objectives_reachable(self.objectives, propositions, mutex_propositions):
-                #print("!!!!!!!!!!!!!!!!!!!!!!!!!!! OBJECTIVE IS THEORETICALLY REACHABLE !!!!!!!!!!!!!!!!!!!!!!!!!")
-                sol = find_solution(self.objectives, self.graph, len(self.graph.layers)-1)
+                #print("!!!!!!!!!!!!!!!!!!!!!!!!!!! OBJECTIVE IS THEORETICALLY REACHABLE !!!!!!!!!!!!!!!!!!!!!!!!!\n")
+                sol = find_solution(self.objectives, self.graph, len(self.graph.layers)-1, writing_path)
                 if sol[0] == "success":
                     solved = True
             n_iter += 1
+            print(n_iter)
+        #file.close()
 
         self.solution = sol
     

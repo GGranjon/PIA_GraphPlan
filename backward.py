@@ -4,20 +4,30 @@ from itertools import product
 from joblib import Parallel, delayed
 
 def objectives_reachable(objectives, propositions, mutex_propositions):
+    if len(objectives) == 1:
+        return get_index(propositions, objectives[0]) != -1
+    if len(objectives) == 0:
+        return True
     objectives_indexes = []
+    """print("IN OBJECTIVE REACHABLE\n")
+    for prop in propositions:
+        print(prop, "\n")"""
     for prop in objectives:
         index = get_index(propositions, prop)
         if index == -1:
+            #print("NOT REACHABLE BECAUSE NOT FOUND ------------------------------------------------------------------------------\n")
+            #print(prop)
             return False
         objectives_indexes.append(index)
     for i in range(len(objectives_indexes)-1):
         for j in range(i+1, len(objectives_indexes)):
-            couple = {i,j}
+            couple = {objectives_indexes[i],objectives_indexes[j]}
             if couple in mutex_propositions:
+                #print(f"{objectives[i]} and {objectives[j]} are mutex ----------------- : {i,j}\n")
                 return False
     return True
 
-def process_action_combo(combo, actions, graph, layer_index):
+def process_action_combo(combo, actions, graph, layer_index, file_path):
     """
     Traitement d'une combinaison d'actions pour en déduire les nouveaux objectifs.
     C'est la fonction qui sera parallélisée.
@@ -30,20 +40,25 @@ def process_action_combo(combo, actions, graph, layer_index):
                 new_objectives.append(precond)
     
     # Appel de la fonction find_solution pour chaque combinaison d'actions
-    sol_combo = find_solution(new_objectives, graph, layer_index - 2)
+    sol_combo = find_solution(new_objectives, graph, layer_index - 2, file_path)
     return sol_combo
 
-def find_solution(objectives, graph: Graph, layer_index):
-    #print(f"--------------------------- LAYER {layer_index} ------------------------------")
+def find_solution(objectives, graph: Graph, layer_index, file_path):
+    #file = open(file_path, "a")
+    #file.write(f"--------------------------- LAYER {layer_index} ------------------------------\n")
+    #print(f"--------------------------- LAYER {layer_index} ------------------------------\n")
+    parallel = True
     if layer_index == 0:    # Base case scenario
-        if objectives_reachable(objectives, graph.layers[0], []):
+        if objectives_reachable(objectives, graph.layers[layer_index], []):
             return ["success", []]
-
+        else:
+            return ["fail", []]
+    
     propositions = graph.layers[layer_index]
     mutex_propositions = graph.mutex_per_layer[layer_index]
     actions = graph.layers[layer_index-1]
     mutex_actions = graph.mutex_per_layer[layer_index-1]
-
+    
     indexes = []
     for objective in objectives :
         index = get_index(propositions, objective)
@@ -51,6 +66,14 @@ def find_solution(objectives, graph: Graph, layer_index):
             raise Exception("prop not found")
         indexes.append(index)
     objectives = [propositions[index] for index in indexes]
+
+    """print("-------------------- OBJECTIVES -------------------------\n")
+    for obj in objectives:
+        print(f"{obj}\n")"""
+
+    if not objectives_reachable(objectives, graph.layers[layer_index], mutex_propositions):
+        #print("OBJECTIVES ARE MUTEX")
+        return ["fail", []]
 
     actions_per_objective = {}
     for i, objective in enumerate(objectives):
@@ -60,18 +83,35 @@ def find_solution(objectives, graph: Graph, layer_index):
     
     action_combinations = find_valid_action_combinations(actions_per_objective, mutex_actions)
     if len(action_combinations) == 0:
-            #print("------------------- NO COMBINATION OF ACTIONS FOUND -----------------")
+            #file.write("------------------- NO COMBINATION OF ACTIONS FOUND -----------------")
             return ["fail", []]
     else:
-        solutions = Parallel(n_jobs=-1)(delayed(process_action_combo)(combo, actions, graph, layer_index) for combo in action_combinations)
-        for k, sol_combo in enumerate(solutions):
-            if sol_combo[0] == "success":
-                new_sol = sol_combo[1]
-                actions_this_step = set({})
-                for index in action_combinations[k]:
-                    actions_this_step.add(actions[index]["action"])
-                new_sol.append(actions_this_step)
-                return ["success", new_sol]
+        if parallel:
+            solutions = Parallel(n_jobs=-1)(delayed(process_action_combo)(combo, actions, graph, layer_index, file_path) for combo in action_combinations)
+            for k, sol_combo in enumerate(solutions):
+                if sol_combo[0] == "success":
+                    new_sol = sol_combo[1]
+                    actions_this_step = set({})
+                    for index in action_combinations[k]:
+                        actions_this_step.add(actions[index]["action"])
+                    new_sol.append(actions_this_step)
+                    return ["success", new_sol]
+        else:
+            for combo in action_combinations:
+                new_objectives = []
+                for action_index in combo:
+                    action_preconditions = actions[action_index]["pre"]
+                    for precond in action_preconditions:
+                        if precond not in new_objectives:
+                            new_objectives.append(precond)
+                sol_combo = find_solution(new_objectives, graph, layer_index - 2, file_path)
+                if sol_combo[0] == "success":
+                    new_sol = sol_combo[1]
+                    actions_this_step = set({})
+                    for index in combo:
+                        actions_this_step.add(actions[index]["action"])
+                    new_sol.append(actions_this_step)
+                    return ["success", new_sol]
         return ["fail", []]
 
 def find_valid_action_combinations(actions_for_props, mutex_actions):
@@ -90,7 +130,7 @@ def find_valid_action_combinations(actions_for_props, mutex_actions):
         if not contains_mutex_pair(combination, mutex_actions) and set(combination) not in valid_combinations:
             valid_combinations.append(set(combination))  # Store as set for easy comparison
     valid_combinations = sorted(valid_combinations, key=len)
-    return reduce_action_combinations(valid_combinations)
+    return valid_combinations #reduce_action_combinations(valid_combinations)
 
 
 def contains_mutex_pair(combination, mutex_pairs):

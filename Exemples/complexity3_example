@@ -1,0 +1,31 @@
+
+(Berlin PLACE)
+(Paris PLACE)
+(Tokyo PLACE)
+(Sherbrooke PLACE)
+(r1 ROCKET)
+(r2 ROCKET)
+(r3 ROCKET)
+(cargo1 CARGO)
+(cargo2 CARGO)
+(cargo3 CARGO)
+(cargo4 CARGO)
+
+(preconds
+(has-fuel r1)
+(has-fuel r2)
+(has-fuel r3)
+(at r1 Berlin)
+(at r2 Berlin)
+(at r3 Tokyo)
+(at cargo1 Berlin)
+(at cargo2 Berlin)
+(at cargo3 Berlin)
+(at cargo4 Berlin))
+
+(effects
+(at cargo1 Paris)
+(at cargo2 Paris)
+(at cargo3 Tokyo)
+(at cargo4 Sherbrooke))
+

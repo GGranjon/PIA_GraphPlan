@@ -1,0 +1,187 @@
+------------------------ PROFONDEUR 0 ------------------------
+----------------------- PROPOSITIONS --------------------
+{'type': 'in', 'neg': False, 'object': 'mxf', 'rocket': 'r1', 'actions': [0]}
+{'type': 'in', 'neg': False, 'object': 'avrim', 'rocket': 'r1', 'actions': [1]}
+{'type': 'in', 'neg': False, 'object': 'alex', 'rocket': 'r1', 'actions': [2]}
+{'type': 'in', 'neg': False, 'object': 'jason', 'rocket': 'r1', 'actions': [3]}
+{'type': 'in', 'neg': False, 'object': 'pencil', 'rocket': 'r1', 'actions': [4]}
+{'type': 'in', 'neg': False, 'object': 'paper', 'rocket': 'r1', 'actions': [5]}
+{'type': 'in', 'neg': False, 'object': 'x', 'rocket': 'r1', 'actions': [6]}
+{'type': 'in', 'neg': False, 'object': 'y', 'rocket': 'r1', 'actions': [7]}
+{'type': 'in', 'neg': False, 'object': 'z', 'rocket': 'r1', 'actions': [8]}
+{'type': 'in', 'neg': False, 'object': 'mxf', 'rocket': 'r2', 'actions': [9]}
+{'type': 'in', 'neg': False, 'object': 'avrim', 'rocket': 'r2', 'actions': [10]}
+{'type': 'in', 'neg': False, 'object': 'alex', 'rocket': 'r2', 'actions': [11]}
+{'type': 'in', 'neg': False, 'object': 'jason', 'rocket': 'r2', 'actions': [12]}
+{'type': 'in', 'neg': False, 'object': 'pencil', 'rocket': 'r2', 'actions': [13]}
+{'type': 'in', 'neg': False, 'object': 'paper', 'rocket': 'r2', 'actions': [14]}
+{'type': 'in', 'neg': False, 'object': 'x', 'rocket': 'r2', 'actions': [15]}
+{'type': 'in', 'neg': False, 'object': 'y', 'rocket': 'r2', 'actions': [16]}
+{'type': 'in', 'neg': False, 'object': 'z', 'rocket': 'r2', 'actions': [17]}
+{'type': 'at', 'neg': False, 'object': 'r1', 'place': 'Paris', 'actions': [18]}
+{'type': 'at', 'neg': False, 'object': 'r1', 'place': 'JFK', 'actions': [19]}
+{'type': 'at', 'neg': False, 'object': 'r1', 'place': 'Montreal', 'actions': [20]}
+{'type': 'at', 'neg': False, 'object': 'r2', 'place': 'Paris', 'actions': [21]}
+{'type': 'at', 'neg': False, 'object': 'r2', 'place': 'JFK', 'actions': [22]}
+{'type': 'at', 'neg': False, 'object': 'r2', 'place': 'Montreal', 'actions': [23]}
+{'type': 'at', 'neg': False, 'object': 'r3', 'place': 'London', 'actions': [24]}
+{'type': 'at', 'neg': False, 'object': 'r3', 'place': 'Paris', 'actions': [25]}
+{'type': 'at', 'neg': False, 'object': 'r3', 'place': 'Montreal', 'actions': [26]}
+{'type': 'at', 'neg': False, 'object': 'r1', 'place': 'London', 'actions': [27]}
+{'type': 'at', 'neg': False, 'object': 'r2', 'place': 'London', 'actions': [28]}
+{'type': 'at', 'neg': False, 'object': 'r3', 'place': 'JFK', 'actions': [29]}
+{'type': 'at', 'neg': False, 'object': 'mxf', 'place': 'London', 'actions': [30]}
+{'type': 'at', 'neg': False, 'object': 'avrim', 'place': 'London', 'actions': [31]}
+{'type': 'at', 'neg': False, 'object': 'alex', 'place': 'London', 'actions': [32]}
+{'type': 'at', 'neg': False, 'object': 'jason', 'place': 'London', 'actions': [33]}
+{'type': 'at', 'neg': False, 'object': 'pencil', 'place': 'London', 'actions': [34]}
+{'type': 'at', 'neg': False, 'object': 'paper', 'place': 'London', 'actions': [35]}
+{'type': 'has_fuel', 'neg': False, 'rocket': 'r1', 'actions': [36]}
+{'type': 'has_fuel', 'neg': False, 'rocket': 'r2', 'actions': [37]}
+{'type': 'has_fuel', 'neg': False, 'rocket': 'r3', 'actions': [38]}
+{'type': 'at', 'neg': False, 'object': 'x', 'place': 'London', 'actions': [39]}
+{'type': 'at', 'neg': False, 'object': 'y', 'place': 'London', 'actions': [40]}
+{'type': 'at', 'neg': False, 'object': 'z', 'place': 'London', 'actions': [41]}
+------------------------ PROFONDEUR 1 ------------------------
+----------------------- PROPOSITIONS --------------------
+{'type': 'in', 'neg': False, 'object': 'mxf', 'rocket': 'r3', 'actions': [0]}
+{'type': 'in', 'neg': False, 'object': 'avrim', 'rocket': 'r3', 'actions': [1]}
+{'type': 'in', 'neg': False, 'object': 'alex', 'rocket': 'r3', 'actions': [2]}
+{'type': 'in', 'neg': False, 'object': 'jason', 'rocket': 'r3', 'actions': [3]}
+{'type': 'in', 'neg': False, 'object': 'pencil', 'rocket': 'r3', 'actions': [4]}
+{'type': 'in', 'neg': False, 'object': 'paper', 'rocket': 'r3', 'actions': [5]}
+{'type': 'in', 'neg': False, 'object': 'x', 'rocket': 'r3', 'actions': [6]}
+{'type': 'in', 'neg': False, 'object': 'y', 'rocket': 'r3', 'actions': [7]}
+{'type': 'in', 'neg': False, 'object': 'z', 'rocket': 'r3', 'actions': [8]}
+{'type': 'in', 'neg': False, 'object': 'mxf', 'rocket': 'r1', 'actions': [9, 135]}
+{'type': 'in', 'neg': False, 'object': 'avrim', 'rocket': 'r1', 'actions': [10, 136]}
+{'type': 'in', 'neg': False, 'object': 'alex', 'rocket': 'r1', 'actions': [11, 137]}
+{'type': 'in', 'neg': False, 'object': 'jason', 'rocket': 'r1', 'actions': [12, 138]}
+{'type': 'in', 'neg': False, 'object': 'pencil', 'rocket': 'r1', 'actions': [13, 139]}
+{'type': 'in', 'neg': False, 'object': 'paper', 'rocket': 'r1', 'actions': [14, 140]}
+{'type': 'in', 'neg': False, 'object': 'x', 'rocket': 'r1', 'actions': [15, 141]}
+{'type': 'in', 'neg': False, 'object': 'y', 'rocket': 'r1', 'actions': [16, 142]}
+{'type': 'in', 'neg': False, 'object': 'z', 'rocket': 'r1', 'actions': [17, 143]}
+{'type': 'in', 'neg': False, 'object': 'mxf', 'rocket': 'r2', 'actions': [18, 144]}
+{'type': 'in', 'neg': False, 'object': 'avrim', 'rocket': 'r2', 'actions': [19, 145]}
+{'type': 'in', 'neg': False, 'object': 'alex', 'rocket': 'r2', 'actions': [20, 146]}
+{'type': 'in', 'neg': False, 'object': 'jason', 'rocket': 'r2', 'actions': [21, 147]}
+{'type': 'in', 'neg': False, 'object': 'pencil', 'rocket': 'r2', 'actions': [22, 148]}
+{'type': 'in', 'neg': False, 'object': 'paper', 'rocket': 'r2', 'actions': [23, 149]}
+{'type': 'in', 'neg': False, 'object': 'x', 'rocket': 'r2', 'actions': [24, 150]}
+{'type': 'in', 'neg': False, 'object': 'y', 'rocket': 'r2', 'actions': [25, 151]}
+{'type': 'in', 'neg': False, 'object': 'z', 'rocket': 'r2', 'actions': [26, 152]}
+{'type': 'at', 'neg': False, 'object': 'mxf', 'place': 'Paris', 'actions': [27, 63]}
+{'type': 'at', 'neg': False, 'object': 'mxf', 'place': 'JFK', 'actions': [28, 64]}
+{'type': 'at', 'neg': False, 'object': 'mxf', 'place': 'Montreal', 'actions': [29, 65]}
+{'type': 'at', 'neg': False, 'object': 'mxf', 'place': 'London', 'actions': [30, 66, 165]}
+{'type': 'at', 'neg': False, 'object': 'avrim', 'place': 'Paris', 'actions': [31, 67]}
+{'type': 'at', 'neg': False, 'object': 'avrim', 'place': 'JFK', 'actions': [32, 68]}
+{'type': 'at', 'neg': False, 'object': 'avrim', 'place': 'Montreal', 'actions': [33, 69]}
+{'type': 'at', 'neg': False, 'object': 'avrim', 'place': 'London', 'actions': [34, 70, 166]}
+{'type': 'at', 'neg': False, 'object': 'alex', 'place': 'Paris', 'actions': [35, 71]}
+{'type': 'at', 'neg': False, 'object': 'alex', 'place': 'JFK', 'actions': [36, 72]}
+{'type': 'at', 'neg': False, 'object': 'alex', 'place': 'Montreal', 'actions': [37, 73]}
+{'type': 'at', 'neg': False, 'object': 'alex', 'place': 'London', 'actions': [38, 74, 167]}
+{'type': 'at', 'neg': False, 'object': 'jason', 'place': 'Paris', 'actions': [39, 75]}
+{'type': 'at', 'neg': False, 'object': 'jason', 'place': 'JFK', 'actions': [40, 76]}
+{'type': 'at', 'neg': False, 'object': 'jason', 'place': 'Montreal', 'actions': [41, 77]}
+{'type': 'at', 'neg': False, 'object': 'jason', 'place': 'London', 'actions': [42, 78, 168]}
+{'type': 'at', 'neg': False, 'object': 'pencil', 'place': 'Paris', 'actions': [43, 79]}
+{'type': 'at', 'neg': False, 'object': 'pencil', 'place': 'JFK', 'actions': [44, 80]}
+{'type': 'at', 'neg': False, 'object': 'pencil', 'place': 'Montreal', 'actions': [45, 81]}
+{'type': 'at', 'neg': False, 'object': 'pencil', 'place': 'London', 'actions': [46, 82, 169]}
+{'type': 'at', 'neg': False, 'object': 'paper', 'place': 'Paris', 'actions': [47, 83]}
+{'type': 'at', 'neg': False, 'object': 'paper', 'place': 'JFK', 'actions': [48, 84]}
+{'type': 'at', 'neg': False, 'object': 'paper', 'place': 'Montreal', 'actions': [49, 85]}
+{'type': 'at', 'neg': False, 'object': 'paper', 'place': 'London', 'actions': [50, 86, 170]}
+{'type': 'at', 'neg': False, 'object': 'x', 'place': 'Paris', 'actions': [51, 87]}
+{'type': 'at', 'neg': False, 'object': 'x', 'place': 'JFK', 'actions': [52, 88]}
+{'type': 'at', 'neg': False, 'object': 'x', 'place': 'Montreal', 'actions': [53, 89]}
+{'type': 'at', 'neg': False, 'object': 'x', 'place': 'London', 'actions': [54, 90, 174]}
+{'type': 'at', 'neg': False, 'object': 'y', 'place': 'Paris', 'actions': [55, 91]}
+{'type': 'at', 'neg': False, 'object': 'y', 'place': 'JFK', 'actions': [56, 92]}
+{'type': 'at', 'neg': False, 'object': 'y', 'place': 'Montreal', 'actions': [57, 93]}
+{'type': 'at', 'neg': False, 'object': 'y', 'place': 'London', 'actions': [58, 94, 175]}
+{'type': 'at', 'neg': False, 'object': 'z', 'place': 'Paris', 'actions': [59, 95]}
+{'type': 'at', 'neg': False, 'object': 'z', 'place': 'JFK', 'actions': [60, 96]}
+{'type': 'at', 'neg': False, 'object': 'z', 'place': 'Montreal', 'actions': [61, 97]}
+{'type': 'at', 'neg': False, 'object': 'z', 'place': 'London', 'actions': [62, 98, 176]}
+{'type': 'at', 'neg': False, 'object': 'r1', 'place': 'London', 'actions': [99, 102, 105, 162]}
+{'type': 'at', 'neg': False, 'object': 'r1', 'place': 'JFK', 'actions': [100, 107, 109, 154]}
+{'type': 'at', 'neg': False, 'object': 'r1', 'place': 'Montreal', 'actions': [101, 104, 110, 155]}
+{'type': 'at', 'neg': False, 'object': 'r1', 'place': 'Paris', 'actions': [103, 106, 108, 153]}
+{'type': 'at', 'neg': False, 'object': 'r2', 'place': 'London', 'actions': [111, 114, 117, 163]}
+{'type': 'at', 'neg': False, 'object': 'r2', 'place': 'JFK', 'actions': [112, 119, 121, 157]}
+{'type': 'at', 'neg': False, 'object': 'r2', 'place': 'Montreal', 'actions': [113, 116, 122, 158]}
+{'type': 'at', 'neg': False, 'object': 'r2', 'place': 'Paris', 'actions': [115, 118, 120, 156]}
+{'type': 'at', 'neg': False, 'object': 'r3', 'place': 'Paris', 'actions': [123, 130, 133, 160]}
+{'type': 'at', 'neg': False, 'object': 'r3', 'place': 'JFK', 'actions': [124, 127, 131, 164]}
+{'type': 'at', 'neg': False, 'object': 'r3', 'place': 'Montreal', 'actions': [125, 128, 134, 161]}
+{'type': 'at', 'neg': False, 'object': 'r3', 'place': 'London', 'actions': [126, 129, 132, 159]}
+{'type': 'has_fuel', 'neg': False, 'rocket': 'r1', 'actions': [171]}
+{'type': 'has_fuel', 'neg': False, 'rocket': 'r2', 'actions': [172]}
+{'type': 'has_fuel', 'neg': False, 'rocket': 'r3', 'actions': [173]}
+------------------------ PROFONDEUR 2 ------------------------
+----------------------- PROPOSITIONS --------------------
+{'type': 'in', 'neg': False, 'object': 'mxf', 'rocket': 'r1', 'actions': [0, 27, 54, 81, 261]}
+{'type': 'in', 'neg': False, 'object': 'avrim', 'rocket': 'r1', 'actions': [1, 28, 55, 82, 262]}
+{'type': 'in', 'neg': False, 'object': 'alex', 'rocket': 'r1', 'actions': [2, 29, 56, 83, 263]}
+{'type': 'in', 'neg': False, 'object': 'jason', 'rocket': 'r1', 'actions': [3, 30, 57, 84, 264]}
+{'type': 'in', 'neg': False, 'object': 'pencil', 'rocket': 'r1', 'actions': [4, 31, 58, 85, 265]}
+{'type': 'in', 'neg': False, 'object': 'paper', 'rocket': 'r1', 'actions': [5, 32, 59, 86, 266]}
+{'type': 'in', 'neg': False, 'object': 'x', 'rocket': 'r1', 'actions': [6, 33, 60, 87, 267]}
+{'type': 'in', 'neg': False, 'object': 'y', 'rocket': 'r1', 'actions': [7, 34, 61, 88, 268]}
+{'type': 'in', 'neg': False, 'object': 'z', 'rocket': 'r1', 'actions': [8, 35, 62, 89, 269]}
+{'type': 'in', 'neg': False, 'object': 'mxf', 'rocket': 'r2', 'actions': [9, 36, 63, 90, 270]}
+{'type': 'in', 'neg': False, 'object': 'avrim', 'rocket': 'r2', 'actions': [10, 37, 64, 91, 271]}
+{'type': 'in', 'neg': False, 'object': 'alex', 'rocket': 'r2', 'actions': [11, 38, 65, 92, 272]}
+{'type': 'in', 'neg': False, 'object': 'jason', 'rocket': 'r2', 'actions': [12, 39, 66, 93, 273]}
+{'type': 'in', 'neg': False, 'object': 'pencil', 'rocket': 'r2', 'actions': [13, 40, 67, 94, 274]}
+{'type': 'in', 'neg': False, 'object': 'paper', 'rocket': 'r2', 'actions': [14, 41, 68, 95, 275]}
+{'type': 'in', 'neg': False, 'object': 'x', 'rocket': 'r2', 'actions': [15, 42, 69, 96, 276]}
+{'type': 'in', 'neg': False, 'object': 'y', 'rocket': 'r2', 'actions': [16, 43, 70, 97, 277]}
+{'type': 'in', 'neg': False, 'object': 'z', 'rocket': 'r2', 'actions': [17, 44, 71, 98, 278]}
+{'type': 'in', 'neg': False, 'object': 'mxf', 'rocket': 'r3', 'actions': [18, 45, 72, 99, 252]}
+{'type': 'in', 'neg': False, 'object': 'avrim', 'rocket': 'r3', 'actions': [19, 46, 73, 100, 253]}
+{'type': 'in', 'neg': False, 'object': 'alex', 'rocket': 'r3', 'actions': [20, 47, 74, 101, 254]}
+{'type': 'in', 'neg': False, 'object': 'jason', 'rocket': 'r3', 'actions': [21, 48, 75, 102, 255]}
+{'type': 'in', 'neg': False, 'object': 'pencil', 'rocket': 'r3', 'actions': [22, 49, 76, 103, 256]}
+{'type': 'in', 'neg': False, 'object': 'paper', 'rocket': 'r3', 'actions': [23, 50, 77, 104, 257]}
+{'type': 'in', 'neg': False, 'object': 'x', 'rocket': 'r3', 'actions': [24, 51, 78, 105, 258]}
+{'type': 'in', 'neg': False, 'object': 'y', 'rocket': 'r3', 'actions': [25, 52, 79, 106, 259]}
+{'type': 'in', 'neg': False, 'object': 'z', 'rocket': 'r3', 'actions': [26, 53, 80, 107, 260]}
+{'type': 'at', 'neg': False, 'object': 'mxf', 'place': 'Paris', 'actions': [108, 147, 183, 279]}
+{'type': 'at', 'neg': False, 'object': 'mxf', 'place': 'JFK', 'actions': [109, 145, 181, 280]}
+{'type': 'at', 'neg': False, 'object': 'mxf', 'place': 'Montreal', 'actions': [110, 146, 182, 281]}
+{'type': 'at', 'neg': False, 'object': 'mxf', 'place': 'London', 'actions': [111, 144, 180, 282]}
+{'type': 'at', 'neg': False, 'object': 'avrim', 'place': 'Paris', 'actions': [112, 151, 187, 283]}
+{'type': 'at', 'neg': False, 'object': 'avrim', 'place': 'JFK', 'actions': [113, 149, 185, 284]}
+{'type': 'at', 'neg': False, 'object': 'avrim', 'place': 'Montreal', 'actions': [114, 150, 186, 285]}
+{'type': 'at', 'neg': False, 'object': 'avrim', 'place': 'London', 'actions': [115, 148, 184, 286]}
+{'type': 'at', 'neg': False, 'object': 'alex', 'place': 'Paris', 'actions': [116, 155, 191, 287]}
+{'type': 'at', 'neg': False, 'object': 'alex', 'place': 'JFK', 'actions': [117, 153, 189, 288]}
+{'type': 'at', 'neg': False, 'object': 'alex', 'place': 'Montreal', 'actions': [118, 154, 190, 289]}
+{'type': 'at', 'neg': False, 'object': 'alex', 'place': 'London', 'actions': [119, 152, 188, 290]}
+{'type': 'at', 'neg': False, 'object': 'jason', 'place': 'Paris', 'actions': [120, 159, 195, 291]}
+{'type': 'at', 'neg': False, 'object': 'jason', 'place': 'JFK', 'actions': [121, 157, 193, 292]}
+{'type': 'at', 'neg': False, 'object': 'jason', 'place': 'Montreal', 'actions': [122, 158, 194, 293]}
+{'type': 'at', 'neg': False, 'object': 'jason', 'place': 'London', 'actions': [123, 156, 192, 294]}
+{'type': 'at', 'neg': False, 'object': 'pencil', 'place': 'Paris', 'actions': [124, 163, 199, 295]}
+{'type': 'at', 'neg': False, 'object': 'pencil', 'place': 'JFK', 'actions': [125, 161, 197, 296]}
+{'type': 'at', 'neg': False, 'object': 'pencil', 'place': 'Montreal', 'actions': [126, 162, 198, 297]}
+{'type': 'at', 'neg': False, 'object': 'pencil', 'place': 'London', 'actions': [127, 160, 196, 298]}
+{'type': 'at', 'neg': False, 'object': 'paper', 'place': 'Paris', 'actions': [128, 167, 203, 299]}
+{'type': 'at', 'neg': False, 'object': 'paper', 'place': 'JFK', 'actions': [129, 165, 201, 300]}
+{'type': 'at', 'neg': False, 'object': 'paper', 'place': 'Montreal', 'actions': [130, 166, 202, 301]}
+{'type': 'at', 'neg': False, 'object': 'paper', 'place': 'London', 'actions': [131, 164, 200, 302]}
+{'type': 'at', 'neg': False, 'object': 'x', 'place': 'Paris', 'actions': [132, 171, 207, 303]}
+{'type': 'at', 'neg': False, 'object': 'x', 'place': 'JFK', 'actions': [133, 169, 205, 304]}
+{'type': 'at', 'neg': False, 'object': 'x', 'place': 'Montreal', 'actions': [134, 170, 206, 305]}
+{'type': 'at', 'neg': False, 'object': 'x', 'place': 'London', 'actions': [135, 168, 204, 306]}
+{'type': 'at', 'neg': False, 'object': 'y', 'place': 'Paris', 'actions': [136, 175, 211, 307]}
+{'type': 'at', 'neg': False, 'object': 'y', 'place': 'JFK', 'actions': [137, 173, 209, 308]}
+{'type': 'at', 'neg': False, 'object': 'y', 'place': 'Montreal', 'actions': [138, 174, 210, 309]}
+{'type': 'at', 'neg': False, 'object': 'y', 'place': 'London', 'actions': [139, 172, 208, 310]}
+{'type': 'at', 'neg': False, 'object': 'z', 'place': 'Paris', 'actions': [140, 179, 215, 311]}
+{'type': 'at', 'neg': False, 'object': 'z', 'place': 'JFK', 'actions': [141, 177, 213, 312]}

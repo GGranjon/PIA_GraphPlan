@@ -82,5 +82,7 @@ def are_actions_conflict(a1,a2, mutex_propositions, propositions):
             index1 = get_index(propositions, prop1)
             index2 = get_index(propositions, prop2)
             if {index1, index2} in mutex_propositions:
+                #if a1["action"] == "UNLOAD_alex_r1_Paris" and a2["action"] == "UNLOAD_jason_r1_Paris":
+                #    print("CONFLITSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS", index1, index2)
                 return True
     return False
